@@ -20,10 +20,11 @@ $actorList = Actor::findAllActors();
         <tbody>
             <?php foreach($actorList as $actor){ ?>
                 <tr>
+                    <td><?= $actor['id_actor']; ?></td>
                     <td><?= $actor['name']; ?></td>
                     <td><?= $actor['email']; ?></td>
-                    <td><a href="traitement/action.php?idActor=<?= $actor['id_actor']; ?>">Update</a></td>
-                    <td><a href="traitement/action.php?idActor=<?= $actor['id_actor']; ?>">Delete</a></td>
+                    <td><a href="./add_actor.php?id_Acteur=<?= $actor['id_actor']; ?>">Update</a></td>
+                    <td><a href="traitement/action.php?id_Acteur_delete=<?= $actor['id_actor']; ?>">Delete</a></td>
                 </tr>
             <?php } ?>
         </tbody>

@@ -14,15 +14,20 @@ $filmList = Film::findAllFilm();
                 <th>Title</th>
                 <th>Number main actors</th>
                 <th>number_total_actors</th>
+                <th>action</th>
             </tr>
         </thead>
         <tbody>
-            <?php foreach($filmList as $film){ ?>
+            <?php foreach ($filmList as $film) { ?>
                 <tr>
                     <td><?= $film['id_movie']; ?></td>
                     <td><?= $film['title']; ?></td>
                     <td><?= $film['number_main_actors']; ?></td>
                     <td><?= $film['number_total_actors']; ?></td>
+                    <td>
+                        <a href="./add_film.php?id_film=<?= $film['id_movie']; ?>">Update</a><br>
+                        <a href="./traitement/action.php?id_film_delete=<?= $film['id_movie']; ?>">Delete</a>
+                    </td>
                 </tr>
             <?php } ?>
         </tbody>
@@ -33,4 +38,3 @@ $filmList = Film::findAllFilm();
 <?php
 include_once "./inc/footer.php";
 ?>
-

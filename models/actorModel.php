@@ -57,11 +57,11 @@ class Actor{
         $db = Database::dbConnect();
 
         // preparation de la requête
-        $request =$db->prepare("UPDATE actor SET name= ?, email= ? WHERE id = $id ");
+        $request =$db->prepare("UPDATE actor SET name= ?, email= ? WHERE id_actor = ? ");
 
         // exécuter la requête
         try {
-            $request->execute(array($id,$name,$email));
+            $request->execute(array($name, $email, $id));
 
             // rediriger vers la page login.php
             header("Location: http://localhost/film/views/list_actor.php");
@@ -82,10 +82,10 @@ class Actor{
         $request =$db->prepare(" DELETE FROM actor WHERE id_actor = ?");
 
         // exécuter la requête
-        $result = false;
+        
         try {
             $request->execute(array($id));
-            $result = true;
+            
             
         // rediriger vers la page login.php
         header("Location: http://localhost/film/views/list_actor.php");
@@ -93,12 +93,26 @@ class Actor{
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
-        return $result;
+        
 
     }
 
     // methode pour tout afficher 
-    public static function findActorById(){
+    public static function findActorById($id){
+        $db = Database::dbConnect();
 
+        // preparer la requete
+        $request = $db->prepare("SELECT * FROM actor WHERE id_actor=?");
+        //executer la requete
+        try {
+            $request->execute(array($id));;
+            // recuperer le resultat dans un tableau
+            $acteur = $request->fetch();
+
+            return $acteur;
+
+        } catch (PDOException $e) {
+            $e->getMessage();
+        }
     }
 }
