@@ -13,7 +13,8 @@ if (isset($_GET['id_film'])) {
 ?>
 
 <div class="container">
-    <h1 class="m-5">Ajouter un film</h1>
+    <h1 class="m-5">Film</h1>
+    <h2 class="m-5"><?= !empty($film) ? "Modifier les informations du film" : "Ajouter un film" ?></h2>
     <form action="./traitement/action.php" method="post">
 
         <div class="form-group  mb-3">

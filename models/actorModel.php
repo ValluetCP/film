@@ -105,7 +105,7 @@ class Actor{
         $request = $db->prepare("SELECT * FROM actor WHERE id_actor=?");
         //executer la requete
         try {
-            $request->execute(array($id));;
+            $request->execute(array($id));
             // recuperer le resultat dans un tableau
             $acteur = $request->fetch();
 

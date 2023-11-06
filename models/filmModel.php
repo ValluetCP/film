@@ -58,8 +58,8 @@ class Film
 
         // preparer la requete
         $request = $db->prepare("UPDATE film set title = ?, number_main_actors=?, number_total_actors=? WHERE id_movie=?");
+        
         //executer la requete
-
         try {
             $request->execute(array(
                 $title, $number_main_actors, $number_actors, $id
